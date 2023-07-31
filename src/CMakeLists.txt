@@ -1,3 +1,4 @@
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -flto -O3 -Wno-implicit-function-declaration -sUSE_SDL=2 -sUSE_VORBIS=1 -sUSE_LIBPNG=1 ")
 
 set(GISH_SRCS
     audio/audio.c
@@ -133,6 +134,7 @@ else()
 endif()
 
 target_include_directories(freegish PRIVATE
+    ${PROJECT_SOURCE_DIR}/gl4es/include
     ${SDL2_INCLUDE_DIRS}
     ${OPENAL_INCLUDE_DIR}
     ${OPENGL_INCLUDE_DIR}

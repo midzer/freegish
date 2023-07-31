@@ -35,8 +35,8 @@ void checksystemmessages(void)
   int count;
   SDL_Event event;
 
-  if (windowinfo.minimized)
-    SDL_Delay(20);
+  /*if (windowinfo.minimized)
+    SDL_Delay(20);*/
 
   while (SDL_PollEvent(&event))
     {

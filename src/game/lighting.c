@@ -400,7 +400,7 @@ void renderobjectspecular(int objectnum)
 
     glBindTexture(GL_TEXTURE_2D,texture[330].glname);
 
-    glActiveTextureARB(GL_TEXTURE1_ARB);
+    glActiveTexture(GL_TEXTURE1_ARB);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,texture[335].glname);
 
@@ -442,7 +442,7 @@ void renderobjectspecular(int objectnum)
       addvectors(vec2,vec2,vec);
       normalizevector(vec2,vec2);
       glTexCoord2f(0.5f+vec2[0]*0.5f,0.5f+vec2[1]*0.5f);
-      glMultiTexCoord2fARB(GL_TEXTURE1_ARB,0.0f,0.0f);
+      glMultiTexCoord2f(GL_TEXTURE1_ARB,0.0f,0.0f);
       glVertex3fv(objectrender[objectnum].vertex[count]);
 
       subtractvectors(vec,frame.light[lightcount].position,objectrender[objectnum].vertex[((count+1)&31)]);
@@ -465,7 +465,7 @@ void renderobjectspecular(int objectnum)
       addvectors(vec2,vec2,vec);
       normalizevector(vec2,vec2);
       glTexCoord2f(0.5f+vec2[0]*0.5f,0.5f+vec2[1]*0.5f);
-      glMultiTexCoord2fARB(GL_TEXTURE1_ARB,0.0f,0.0f);
+      glMultiTexCoord2f(GL_TEXTURE1_ARB,0.0f,0.0f);
       glVertex3fv(objectrender[objectnum].vertex[((count+1)&31)]);
 
       subtractvectors(vec,frame.light[lightcount].position,objectrender[objectnum].vertex[32]);
@@ -478,7 +478,7 @@ void renderobjectspecular(int objectnum)
       glColor3fv(vec);
 
       glTexCoord2f(0.5f,0.5f);
-      glMultiTexCoord2fARB(GL_TEXTURE1_ARB,0.0f,0.0f);
+      glMultiTexCoord2f(GL_TEXTURE1_ARB,0.0f,0.0f);
       glVertex3fv(objectrender[objectnum].vertex[32]);
   
       glEnd();
@@ -521,7 +521,7 @@ void renderobjectspecular(int objectnum)
       addvectors(vec2,vec2,vec);
       normalizevector(vec2,vec2);
       glTexCoord2f(0.5f+vec2[0]*0.5f,0.5f+vec2[1]*0.5f);
-      glMultiTexCoord2fARB(GL_TEXTURE1_ARB,0.0f,0.0f);
+      glMultiTexCoord2f(GL_TEXTURE1_ARB,0.0f,0.0f);
       glVertex3fv(objectrender[objectnum].vertex[count]);
 
       subtractvectors(vec,frame.light[lightcount].position,objectrender[objectnum].vertex[((count+1)&31)]);
@@ -544,7 +544,7 @@ void renderobjectspecular(int objectnum)
       addvectors(vec2,vec2,vec);
       normalizevector(vec2,vec2);
       glTexCoord2f(0.5f+vec2[0]*0.5f,0.5f+vec2[1]*0.5f);
-      glMultiTexCoord2fARB(GL_TEXTURE1_ARB,0.0f,0.0f);
+      glMultiTexCoord2f(GL_TEXTURE1_ARB,0.0f,0.0f);
       glVertex3fv(objectrender[objectnum].vertex[((count+1)&31)]);
 
       subtractvectors(vec,frame.light[lightcount].position,objectrender[objectnum].vertex[32]);
@@ -557,7 +557,7 @@ void renderobjectspecular(int objectnum)
       glColor3fv(vec);
 
       glTexCoord2f(0.5f,0.5f);
-      glMultiTexCoord2fARB(GL_TEXTURE1_ARB,0.0f,0.0f);
+      glMultiTexCoord2f(GL_TEXTURE1_ARB,0.0f,0.0f);
       glVertex3fv(objectrender[objectnum].vertex[32]);
   
       glEnd();
@@ -565,7 +565,7 @@ void renderobjectspecular(int objectnum)
     */
 
     glDisable(GL_TEXTURE_2D);
-    glActiveTextureARB(GL_TEXTURE0_ARB);
+    glActiveTexture(GL_TEXTURE0_ARB);
 
     glDisable(GL_ALPHA_TEST);
 

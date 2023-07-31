@@ -19,6 +19,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
+#include <gl4esinit.h>
+
 #include "config.h"
 
 #include "sdl/sdl.h"
@@ -45,6 +47,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 int main (int argc,char *argv[])
   {
+  initialize_gl4es();
   int count;
   int flags;
   const char *temp;
@@ -135,9 +138,9 @@ int main (int argc,char *argv[])
     return 1;
     }
 
-    windowicon = SDL_LoadBMP("freegish.bmp");
+    /*windowicon = SDL_LoadBMP("freegish.bmp");
     SDL_SetColorKey(windowicon, SDL_TRUE, SDL_MapRGB(windowicon->format, 255, 255, 255));
-    SDL_SetWindowIcon(globalwindow, windowicon);
+    SDL_SetWindowIcon(globalwindow, windowicon);*/
 
     glcontext = SDL_GL_CreateContext(globalwindow);
 
@@ -189,7 +192,11 @@ int main (int argc,char *argv[])
   if (config.sound)
     setupaudio();
 
-  mainmenu();
+#ifdef __EMSCRIPTEN__
+    emscripten_set_main_loop(mainmenu, 0, 1);
+#else
+    mainmenu();
+#endif
 
   saveconfig();
   savescores();

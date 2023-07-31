@@ -114,11 +114,11 @@ void renderlevelback(void)
   glBlendFunc(GL_SRC_ALPHA,GL_ONE);
 
   glEnable(GL_STENCIL_TEST);
-  glActiveTextureARB(GL_TEXTURE1_ARB);
+  glActiveTexture(GL_TEXTURE1_ARB);
   glEnable(GL_TEXTURE_2D);
   glBindTexture(GL_TEXTURE_2D,texture[332].glname);
   glDisable(GL_TEXTURE_2D);
-  glActiveTextureARB(GL_TEXTURE0_ARB);
+  glActiveTexture(GL_TEXTURE0_ARB);
 
   for (lightcount=0;lightcount<frame.numoflights;lightcount++)
     {
@@ -157,7 +157,7 @@ void renderlevelback(void)
         {
         glBindTexture(GL_TEXTURE_2D,texture[blocknum].glname);
     
-        glActiveTextureARB(GL_TEXTURE1_ARB);
+        glActiveTexture(GL_TEXTURE1_ARB);
         glEnable(GL_TEXTURE_2D);
     
         glBegin(GL_QUADS);
@@ -166,32 +166,32 @@ void renderlevelback(void)
     
         vec[0]=(float)count2;
         vec[1]=(float)count+1.0f;
-        glMultiTexCoord2fARB(GL_TEXTURE0_ARB,0.0f,0.0f);
+        glMultiTexCoord2f(GL_TEXTURE0_ARB,0.0f,0.0f);
         setuplighttexcoord(lightcount,vec);
         glVertex3f(vec[0],vec[1],0.0f);
     
         vec[0]=(float)count2+1.0f;
         vec[1]=(float)count+1.0f;
-        glMultiTexCoord2fARB(GL_TEXTURE0_ARB,1.0f,0.0f);
+        glMultiTexCoord2f(GL_TEXTURE0_ARB,1.0f,0.0f);
         setuplighttexcoord(lightcount,vec);
         glVertex3f(vec[0],vec[1],0.0f);
     
         vec[0]=(float)count2+1.0f;
         vec[1]=(float)count;
-        glMultiTexCoord2fARB(GL_TEXTURE0_ARB,1.0f,1.0f);
+        glMultiTexCoord2f(GL_TEXTURE0_ARB,1.0f,1.0f);
         setuplighttexcoord(lightcount,vec);
         glVertex3f(vec[0],vec[1],0.0f);
     
         vec[0]=(float)count2;
         vec[1]=(float)count;
-        glMultiTexCoord2fARB(GL_TEXTURE0_ARB,0.0f,1.0f);
+        glMultiTexCoord2f(GL_TEXTURE0_ARB,0.0f,1.0f);
         setuplighttexcoord(lightcount,vec);
         glVertex3f(vec[0],vec[1],0.0f);
     
         glEnd();
     
         glDisable(GL_TEXTURE_2D);
-        glActiveTextureARB(GL_TEXTURE0_ARB);
+        glActiveTexture(GL_TEXTURE0_ARB);
         }
       }
     }
@@ -608,7 +608,7 @@ void setuplighttexcoord(int lightcount,float position[3])
   texcoord[0]=(position[0]-frame.light[lightcount].position[0])/frame.light[lightcount].intensity+0.5f;
   texcoord[1]=(position[1]-frame.light[lightcount].position[1])/frame.light[lightcount].intensity+0.5f;
 
-  glMultiTexCoord2fARB(GL_TEXTURE1_ARB,texcoord[0],texcoord[1]);
+  glMultiTexCoord2f(GL_TEXTURE1_ARB,texcoord[0],texcoord[1]);
   }
 
 float calclight(int lightcount,float position[3],float normal[3])
@@ -938,7 +938,7 @@ void renderobjects(void)
         glStencilOp(GL_KEEP,GL_KEEP,GL_KEEP);
         glStencilFunc(GL_NOTEQUAL,(1<<lightcount),(1<<lightcount));
 
-        glActiveTextureARB(GL_TEXTURE1_ARB);
+        glActiveTexture(GL_TEXTURE1_ARB);
         glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D,texture[332].glname);
 
@@ -1006,7 +1006,7 @@ void renderobjects(void)
           }
 
         glDisable(GL_TEXTURE_2D);
-        glActiveTextureARB(GL_TEXTURE0_ARB);
+        glActiveTexture(GL_TEXTURE0_ARB);
         }
 
       glDisable(GL_STENCIL_TEST);
